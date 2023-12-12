@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+ <form method="POST" enctype="multipart/form-data" >
+     {% csrf_token %}
+     <input type="text" name="name" id="name" placeholder="Enter Name"> <br><br>
+     <input type="text" name="description" placeholder="Enter Details"> <br><br>
+     <input type="number" name="price" placeholder="Enter Price"> <br><br>
+     <label  for="category">Choose a Category:</label>
+     <select name="category">
+     {% for cat in cat_list %}
+         <option value="{{cat.name}}">{{cat.name}}</option>
+     {% endfor %}
+     </select><br><br>
+     <input type="file" name="image"><br><br>
+     <input type="number" name="stock" placeholder="Enter Stock"> <br><br>
+     <label> Enter Availability:
+     <input type="radio" name="available" value="true">
+     <label for="available"> Yes</label>
+     <input type="radio" name="available" value="False">
+     <label for="available2"> No</label><br>
+     </label><br><br>
+     <input type="date" name="created" placeholder="Enter Date of Created"> <br><br>
+     <input type="date" name="updated" placeholder="Enter Date of Updated"> <br><br>
+     <input type="submit">
+ </form>
+
+{% endblock %}
+
